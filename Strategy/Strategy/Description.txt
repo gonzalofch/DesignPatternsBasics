@@ -1,0 +1,33 @@
+Strategy:
+
+Sirve para:
+Diferenciar al Cliente del codigo funcional y evitar repetir codigo o saturar de codigo a la aplicacion
+(Clase contexto que acepte siempre una estrategia, que se le dara por parametro generalmente por el "Cliente"
+y luego se vera que Objeto en concreto se instanciará y utilizara la logica que tenga este para ejecutarse)
+
+Utilizar cuando:
+Tenemos mucha funcionalidad muy condicionada.
+Tenemos funcionalidades diferentes que se dedican a hacer algo parecido o lo mismo, pero la logica cambia (de manera diferente).
+Aislar codigo, datos internos y dependencias del codigo del "Cliente".
+
+Permite:
+Intercambiar algoritmos en tiempo de ejecucion.
+Aislar detalles de implementacion de un algoritmo del codigo que se utiliza y todo lo que necesita para utilizarse
+Posibilidad de Sustituir a la Herencia por Composicion
+Introduccion de nuevas estrategias sin necesidad de cambiar el Contexto
+
++Info:
+https://refactoring.guru/es/design-patterns/strategy
+
+
+PARA ESTE EJEMPLO:
+Requerimientos Técnicos:
+Diseñar una clase que represente un contexto donde se aplique el descuento.
+Definir una interfaz o una clase base para las estrategias de descuento.
+Implementar varias estrategias de descuento basadas en los criterios anteriores.
+Permitir que la estrategia de descuento se pueda cambiar dinámicamente en tiempo de ejecución.
+
+Puntos a Considerar:
+¿Cómo definirías la interfaz para las estrategias de descuento?
+¿Cómo diseñarías las clases concretas que implementan estas estrategias?
+¿Cómo aplicarías una estrategia específica a un pedido en particular?
