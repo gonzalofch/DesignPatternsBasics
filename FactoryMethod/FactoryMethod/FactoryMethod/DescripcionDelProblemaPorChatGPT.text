@@ -1,0 +1,33 @@
+Tienes que diseñar un sistema que envíe notificaciones a los usuarios a través de diferentes canales,
+como correo electrónico, SMS, y notificaciones push. La elección del canal de notificación dependerá
+de las preferencias del usuario y del tipo de mensaje.
+
+Requisitos
+Tipos de Notificaciones:
+
+Correo Electrónico: Para notificaciones detalladas y con contenido extenso.
+SMS: Para mensajes cortos y urgentes.
+Notificaciones Push: Para alertas instantáneas y de bajo contenido.
+Criterios para la Elección del Canal:
+
+Correo Electrónico: Si el usuario ha elegido recibir notificaciones por correo electrónico.
+SMS: Si el usuario ha elegido recibir notificaciones por SMS y el mensaje es urgente.
+Notificaciones Push: Si el usuario ha elegido recibir notificaciones push y tiene una aplicación instalada.
+Configuración Dinámica:
+
+El sistema debe permitir agregar nuevos tipos de notificaciones sin cambiar el código principal que envía las notificaciones.
+Requerimientos Técnicos:
+
+Diseñar una clase abstracta o una interfaz para las notificaciones.
+Implementar diferentes clases concretas para cada tipo de notificación.
+Crear un método de fábrica que devuelva la instancia correcta del tipo de notificación basado en los criterios proporcionados.
+Puntos a Considerar
+Cómo definirías la interfaz para las notificaciones?
+Cómo diseñarías las clases concretas que implementan estas notificaciones?
+Cómo implementarías el método de fábrica para crear la notificación correcta basada en los criterios?
+Cuando estés listo, comparte tu solución y revisaré si está correctamente implementada.
+
+
+
+
+
