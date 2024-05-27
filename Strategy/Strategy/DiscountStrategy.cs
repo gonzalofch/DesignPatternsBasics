@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace StrategyFiles
 {
-    public interface DiscountStrategy 
+    public interface IDiscountStrategy
     {
-        public double Discount(Purchase purchase);
+        public double ApplyDiscount(Purchase purchase);
     }
 }

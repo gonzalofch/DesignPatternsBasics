@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace StrategyFiles.DiscountStrategies
 {
-    public class QuantityStrategy : DiscountStrategy
+    public class QuantityStrategy : IDiscountStrategy
     {
         /*
          * Un descuento del 5% si el cliente compra más de 10 artículos.
          * Un descuento del 10% si el cliente compra más de 20 artículos
          */
 
-        public double Discount(Purchase purchase)
+        public double ApplyDiscount(Purchase purchase)
         {
             var money = purchase.MoneySpent;
             if (purchase.PurchasedElements > 10 && purchase.PurchasedElements <= 20)

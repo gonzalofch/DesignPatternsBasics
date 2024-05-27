@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace StrategyFiles.DiscountStrategies
 {
-    public class SpecialStrategy : DiscountStrategy
+    public class SpecialStrategy : IDiscountStrategy
     {
         /*
          * Un descuento del 20% para clientes VIP.
          * Un descuento del 25% para el "Producto del Mes"
          */
 
-        public double Discount(Purchase purchase)
+        public double ApplyDiscount(Purchase purchase)
         {
             var money = purchase.MoneySpent;
 

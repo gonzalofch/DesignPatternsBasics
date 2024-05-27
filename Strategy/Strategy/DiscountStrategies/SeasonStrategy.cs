@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace StrategyFiles.DiscountStrategies
 {
-    public class SeasonStrategy : DiscountStrategy
+    public class SeasonStrategy : IDiscountStrategy
     {
         /*
          * Un descuento del 10% durante la temporada navideña.
          * Un descuento del 15% durante la temporada de verano.
          */
 
-        public double Discount(Purchase purchase)
+        public double ApplyDiscount(Purchase purchase)
         {
             var money = purchase.MoneySpent;
 

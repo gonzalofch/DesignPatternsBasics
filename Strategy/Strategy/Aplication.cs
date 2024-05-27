@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace StrategyFiles
 
         public PurchaseData Execute(Purchase purchase)
         {
+
             double discountApplied = 0;
             discounter.SetStrategy(new QuantityStrategy());
             discountApplied += discounter.ExecuteStrategy(purchase);
@@ -21,9 +23,10 @@ namespace StrategyFiles
             discounter.SetStrategy(new SpecialStrategy());
             discountApplied += discounter.ExecuteStrategy(purchase);
 
-            double finalAmountToPay = purchase.MoneySpent - discountApplied;
+            double finalAmmountToPay = purchase.MoneySpent - discountApplied;
 
-            return new PurchaseData(finalAmountToPay, discountApplied);
+            return new PurchaseData(finalAmmountToPay, discountApplied);
         }
+        
     }
 }

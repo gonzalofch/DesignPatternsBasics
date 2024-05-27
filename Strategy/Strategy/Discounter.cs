@@ -9,15 +9,15 @@ namespace StrategyFiles
     public class Discounter
 
     {
-        private DiscountStrategy Strategy;
+        private IDiscountStrategy _discountStrategy;
 
         public double ExecuteStrategy(Purchase purchase)
         {
-            return Strategy.Discount(purchase);
+            return _discountStrategy.ApplyDiscount(purchase);
         }
 
-        public void SetStrategy(DiscountStrategy strategy) {
-            this.Strategy = strategy;
+        public void SetStrategy(IDiscountStrategy strategy) {
+            this._discountStrategy = strategy;
         }
     }
 }
