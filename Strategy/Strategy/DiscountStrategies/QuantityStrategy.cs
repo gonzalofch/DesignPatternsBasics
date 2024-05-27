@@ -18,14 +18,14 @@ namespace StrategyFiles.DiscountStrategies
             var money = purchase.MoneySpent;
             if (purchase.PurchasedElements > 10 && purchase.PurchasedElements <= 20)
             {
-                return money * 0.95;
+                return money - money * 0.95;
             }
             if (purchase.PurchasedElements > 20)
             {
-                return money * 0.90; 
+                return money - money * 0.90; 
             }
 
-            return purchase.MoneySpent;
+            return 0;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace StrategyFiles.DiscountStrategies
                 return money - money * 0.75;
             }
 
-            return money;
+            return 0;
         }
     }
 }

@@ -13,9 +13,7 @@ namespace StrategyFiles
 
         public PurchaseData Execute(Purchase purchase)
         {
-            double finalAmmountToPay = 0;
             double discountApplied = 0;
-            double initialAmmount = purchase.MoneySpent;
             discounter.SetStrategy(new QuantityStrategy());
             discountApplied += discounter.ExecuteStrategy(purchase);
             discounter.SetStrategy(new SeasonStrategy());
@@ -23,7 +21,7 @@ namespace StrategyFiles
             discounter.SetStrategy(new SpecialStrategy());
             discountApplied += discounter.ExecuteStrategy(purchase);
 
-            finalAmmountToPay = initialAmmount - discountApplied;
+            double finalAmmountToPay = purchase.MoneySpent - discountApplied;
 
             return new PurchaseData(finalAmmountToPay, discountApplied);
         }
