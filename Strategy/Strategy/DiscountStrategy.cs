@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Strategy
+namespace StrategyFiles
 {
     public interface DiscountStrategy 
     {
-        public decimal Discount(Purchase purchase);
+        public double Discount(Purchase purchase);
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Strategy.DiscountStrategies
+namespace StrategyFiles.DiscountStrategies
 {
     public class SeasonStrategy : DiscountStrategy
     {
@@ -14,19 +14,19 @@ namespace Strategy.DiscountStrategies
          * Un descuento del 15% durante la temporada de verano.
          */
 
-        public decimal Discount(Purchase purchase)
+        public double Discount(Purchase purchase)
         {
             var money = purchase.MoneySpent;
 
             if (purchase.PurchaseSeason == Enum.Season.Christmas)
             {
                 /*funcionalidad*/
-                return money - money * 0.90m;
+                return money - money * 0.90;
             }
 
             if (purchase.PurchaseSeason == Enum.Season.Summer)
             {
-                return money - money * 0.85m;
+                return money - money * 0.85;
             }
 
             return money;

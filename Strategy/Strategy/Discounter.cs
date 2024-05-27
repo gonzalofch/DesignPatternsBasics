@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Strategy
+namespace StrategyFiles
 {
     public class Discounter
 
     {
         private DiscountStrategy Strategy;
 
-        public decimal ExecuteStrategy(Purchase purchase)
+        public double ExecuteStrategy(Purchase purchase)
         {
             return Strategy.Discount(purchase);
         }

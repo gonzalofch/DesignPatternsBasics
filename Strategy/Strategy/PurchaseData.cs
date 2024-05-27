@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Strategy
+namespace StrategyFiles
 {
     public class PurchaseData
     {
-        public decimal DiscountApplied { get; }
+        public double FinalAmmountToPay { get; }
 
-        public decimal FinalAmmountToPay { get; }
+        public double DiscountApplied { get; }
 
-        public PurchaseData(decimal discountApplied, decimal finalAmmountToPay)
+
+        public PurchaseData(double finalAmmountToPay, double discountApplied)
         {
-            DiscountApplied = discountApplied;
             FinalAmmountToPay = finalAmmountToPay;
+            DiscountApplied = discountApplied;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Strategy.DiscountStrategies
+namespace StrategyFiles.DiscountStrategies
 {
     public class QuantityStrategy : DiscountStrategy
     {
@@ -13,17 +13,18 @@ namespace Strategy.DiscountStrategies
          * Un descuento del 10% si el cliente compra más de 20 artículos
          */
 
-        public decimal Discount(Purchase purchase)
+        public double Discount(Purchase purchase)
         {
             var money = purchase.MoneySpent;
-            if (money > 10 && money<=20)
+            if (purchase.PurchasedElements > 10 && purchase.PurchasedElements <= 20)
             {
-                return money - money * 0.95m;
+                return money * 0.95;
             }
-            if (money < 20)
+            if (purchase.PurchasedElements > 20)
             {
-                return money - money * 0.90m;
+                return money * 0.90; 
             }
+
             return purchase.MoneySpent;
         }
     }

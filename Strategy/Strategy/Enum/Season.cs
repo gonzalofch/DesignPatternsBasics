@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Strategy.Enum
+namespace StrategyFiles.Enum
 {
     public enum Season
     {

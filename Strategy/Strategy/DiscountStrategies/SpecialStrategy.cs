@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Strategy.DiscountStrategies
+namespace StrategyFiles.DiscountStrategies
 {
     public class SpecialStrategy : DiscountStrategy
     {
@@ -13,18 +13,18 @@ namespace Strategy.DiscountStrategies
          * Un descuento del 25% para el "Producto del Mes"
          */
 
-        public decimal Discount(Purchase purchase)
+        public double Discount(Purchase purchase)
         {
             var money = purchase.MoneySpent;
 
             if (purchase.IsVIP)
             {
-                return money - money * 0.80m;
+                return money - money * 0.80;
             }
             /*Para el "Producto del Mes", no se me ocurria otra manera de hacerlo sin revisar un array de productos y tener q crear un objeto producto*/
             if (purchase.SpecialPurchase)
             {
-                return money - money * 0.75m;
+                return money - money * 0.75;
             }
 
             return money;

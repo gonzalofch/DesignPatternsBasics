@@ -1,11 +1,11 @@
-﻿using Strategy.DiscountStrategies;
+﻿using StrategyFiles.DiscountStrategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Strategy
+namespace StrategyFiles
 {
     public class Aplication
     {
@@ -13,9 +13,9 @@ namespace Strategy
 
         public PurchaseData Execute(Purchase purchase)
         {
-            decimal finalAmmountToPay = 0;
-            decimal discountApplied = 0;
-            decimal initialAmmount = purchase.MoneySpent;
+            double finalAmmountToPay = 0;
+            double discountApplied = 0;
+            double initialAmmount = purchase.MoneySpent;
             discounter.SetStrategy(new QuantityStrategy());
             discountApplied += discounter.ExecuteStrategy(purchase);
             discounter.SetStrategy(new SeasonStrategy());
@@ -25,7 +25,7 @@ namespace Strategy
 
             finalAmmountToPay = initialAmmount - discountApplied;
 
-            return new PurchaseData(discountApplied, finalAmmountToPay);
+            return new PurchaseData(finalAmmountToPay, discountApplied);
         }
     }
 }
