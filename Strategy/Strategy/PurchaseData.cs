@@ -8,14 +8,14 @@ namespace StrategyFiles
 {
     public class PurchaseData
     {
-        public double FinalAmmountToPay { get; }
+        public double FinalAmountToPay { get; }
 
         public double DiscountApplied { get; }
 
 
-        public PurchaseData(double finalAmmountToPay, double discountApplied)
+        public PurchaseData(double finalAmountToPay, double discountApplied)
         {
-            FinalAmmountToPay = finalAmmountToPay;
+            FinalAmountToPay = finalAmountToPay;
             DiscountApplied = discountApplied;
         }
     }

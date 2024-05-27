@@ -21,9 +21,9 @@ namespace StrategyFiles
             discounter.SetStrategy(new SpecialStrategy());
             discountApplied += discounter.ExecuteStrategy(purchase);
 
-            double finalAmmountToPay = purchase.MoneySpent - discountApplied;
+            double finalAmountToPay = purchase.MoneySpent - discountApplied;
 
-            return new PurchaseData(finalAmmountToPay, discountApplied);
+            return new PurchaseData(finalAmountToPay, discountApplied);
         }
     }
 }

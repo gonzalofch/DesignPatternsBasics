@@ -31,10 +31,10 @@ namespace StrategyFiles.Tests
             };
 
             double appliedDiscount = discounter.ExecuteStrategy(new Purchase(data.MoneySpent, data.PurchasedElements, data.PurchaseSeason, data.IsVIP, data.SpecialPurchase));
-            double finalAmmountToPay = data.MoneySpent - appliedDiscount;
-            PurchaseData output = new PurchaseData(finalAmmountToPay, appliedDiscount);
+            double finalAmountToPay = data.MoneySpent - appliedDiscount;
+            PurchaseData output = new PurchaseData(finalAmountToPay, appliedDiscount);
 
-            output.FinalAmmountToPay.Should().Be(95.00);
+            output.FinalAmountToPay.Should().Be(95.00);
             output.DiscountApplied.Should().Be(5.00);
         }
 
@@ -53,10 +53,10 @@ namespace StrategyFiles.Tests
                 SpecialPurchase = false
             };
             var appliedDiscount = discounter.ExecuteStrategy(new Purchase(data.MoneySpent, data.PurchasedElements, data.PurchaseSeason, data.IsVIP, data.SpecialPurchase));
-            var finalAmmountToPay = data.MoneySpent - appliedDiscount;
-            PurchaseData output = new PurchaseData(finalAmmountToPay, appliedDiscount);
+            var finalAmountToPay = data.MoneySpent - appliedDiscount;
+            PurchaseData output = new PurchaseData(finalAmountToPay, appliedDiscount);
 
-            output.FinalAmmountToPay.Should().Be(90.00);
+            output.FinalAmountToPay.Should().Be(90.00);
             output.DiscountApplied.Should().Be(10.00);
         }
 
@@ -76,10 +76,10 @@ namespace StrategyFiles.Tests
             };
 
             var appliedDiscount = discounter.ExecuteStrategy(new Purchase(data.MoneySpent, data.PurchasedElements, data.PurchaseSeason, data.IsVIP, data.SpecialPurchase));
-            var finalAmmountToPay = data.MoneySpent - appliedDiscount;
-            PurchaseData output = new PurchaseData(finalAmmountToPay, appliedDiscount);
+            var finalAmountToPay = data.MoneySpent - appliedDiscount;
+            PurchaseData output = new PurchaseData(finalAmountToPay, appliedDiscount);
 
-            output.FinalAmmountToPay.Should().Be(100.00);
+            output.FinalAmountToPay.Should().Be(100.00);
             output.DiscountApplied.Should().Be(0.00);
         }
         [Fact]
@@ -98,10 +98,10 @@ namespace StrategyFiles.Tests
             };
 
             var appliedDiscount = discounter.ExecuteStrategy(new Purchase(data.MoneySpent, data.PurchasedElements, data.PurchaseSeason, data.IsVIP, data.SpecialPurchase));
-            var finalAmmountToPay = data.MoneySpent - appliedDiscount;
-            PurchaseData output = new PurchaseData(finalAmmountToPay, appliedDiscount);
+            var finalAmountToPay = data.MoneySpent - appliedDiscount;
+            PurchaseData output = new PurchaseData(finalAmountToPay, appliedDiscount);
 
-            output.FinalAmmountToPay.Should().Be(90.00);
+            output.FinalAmountToPay.Should().Be(90.00);
             output.DiscountApplied.Should().Be(10.00);
         }
 
@@ -121,10 +121,10 @@ namespace StrategyFiles.Tests
             };
 
             var appliedDiscount = discounter.ExecuteStrategy(new Purchase(data.MoneySpent, data.PurchasedElements, data.PurchaseSeason, data.IsVIP, data.SpecialPurchase));
-            var finalAmmountToPay = data.MoneySpent - appliedDiscount;
-            PurchaseData output = new PurchaseData(finalAmmountToPay, appliedDiscount);
+            var finalAmountToPay = data.MoneySpent - appliedDiscount;
+            PurchaseData output = new PurchaseData(finalAmountToPay, appliedDiscount);
 
-            output.FinalAmmountToPay.Should().Be(85.00);
+            output.FinalAmountToPay.Should().Be(85.00);
             output.DiscountApplied.Should().Be(15.00);
         }
 
@@ -144,10 +144,84 @@ namespace StrategyFiles.Tests
             };
 
             var appliedDiscount = discounter.ExecuteStrategy(new Purchase(data.MoneySpent, data.PurchasedElements, data.PurchaseSeason, data.IsVIP, data.SpecialPurchase));
-            var finalAmmountToPay = data.MoneySpent - appliedDiscount;
-            PurchaseData output = new PurchaseData(finalAmmountToPay, appliedDiscount);
+            var finalAmountToPay = data.MoneySpent - appliedDiscount;
+            PurchaseData output = new PurchaseData(finalAmountToPay, appliedDiscount);
 
-            output.FinalAmmountToPay.Should().Be(100.00);
+            output.FinalAmountToPay.Should().Be(100.00);
+            output.DiscountApplied.Should().Be(0.00);
+        }
+        [Fact]
+        public void PurchaseData_Should_Be_Expected_SpecialStrategy_20_Percent_Discount_Applied()
+        {
+            Discounter discounter = new Discounter();
+            discounter.SetStrategy(new SpecialStrategy());
+
+            var data = new PurchaseTestData()
+            {
+                MoneySpent = 100,
+                PurchasedElements = 25,
+                PurchaseSeason = Season.Winter,
+                IsVIP = true, // VIP
+                SpecialPurchase = false
+            };
+
+            var purchase = new Purchase(data.MoneySpent, data.PurchasedElements, data.PurchaseSeason, data.IsVIP, data.SpecialPurchase);
+
+            var appliedDiscount = discounter.ExecuteStrategy(purchase);
+            var finalAmountToPay = data.MoneySpent - appliedDiscount;
+            var output = new PurchaseData(finalAmountToPay, appliedDiscount);
+
+            output.FinalAmountToPay.Should().Be(80.00); // 20% descuento
+            output.DiscountApplied.Should().Be(20.00);
+        }
+
+        [Fact]
+        public void PurchaseData_Should_Be_Expected_SpecialStrategy_25_Percent_Discount_Applied()
+        {
+            Discounter discounter = new Discounter();
+            discounter.SetStrategy(new SpecialStrategy());
+
+            var data = new PurchaseTestData()
+            {
+                MoneySpent = 100,
+                PurchasedElements = 25,
+                PurchaseSeason = Season.Winter,
+                IsVIP = false,
+                SpecialPurchase = true 
+            };
+
+            var purchase = new Purchase(data.MoneySpent, data.PurchasedElements, data.PurchaseSeason, data.IsVIP, data.SpecialPurchase);
+
+            var appliedDiscount = discounter.ExecuteStrategy(purchase);
+            var finalAmountToPay = data.MoneySpent - appliedDiscount;
+            var output = new PurchaseData(finalAmountToPay, appliedDiscount);
+
+            output.FinalAmountToPay.Should().Be(75.00); // 25% de descuento
+            output.DiscountApplied.Should().Be(25.00);
+        }
+
+        [Fact]
+        public void PurchaseData_Should_Be_Expected_SpecialStrategy_No_Discount_Applied()
+        {
+            Discounter discounter = new Discounter();
+            discounter.SetStrategy(new SpecialStrategy());
+
+            var data = new PurchaseTestData()
+            {
+                MoneySpent = 100,
+                PurchasedElements = 25,
+                PurchaseSeason = Season.Winter,
+                IsVIP = false,
+                SpecialPurchase = false 
+            };
+
+            var purchase = new Purchase(data.MoneySpent, data.PurchasedElements, data.PurchaseSeason, data.IsVIP, data.SpecialPurchase);
+
+            var appliedDiscount = discounter.ExecuteStrategy(purchase);
+            var finalAmountToPay = data.MoneySpent - appliedDiscount;
+            var output = new PurchaseData(finalAmountToPay, appliedDiscount);
+
+            output.FinalAmountToPay.Should().Be(100.00); // No hay descuento
             output.DiscountApplied.Should().Be(0.00);
         }
     }
