@@ -10,19 +10,22 @@ namespace Strategy
     public class Aplication
     {
         Discounter discounter;
-        private decimal DiscountApplied = 0;
-        private decimal AmmountToPay = 0;
 
-        public void Execute(Purchase purchase)
+        public PurchaseData Execute(Purchase purchase)
         {
-            var initialAmmount = purchase.MoneySpent;
+            decimal finalAmmountToPay = 0;
+            decimal discountApplied = 0;
+            decimal initialAmmount = purchase.MoneySpent;
             discounter.SetStrategy(new QuantityStrategy());
-            DiscountApplied += discounter.ExecuteStrategy(purchase);
+            discountApplied += discounter.ExecuteStrategy(purchase);
             discounter.SetStrategy(new SeasonStrategy());
-            DiscountApplied += discounter.ExecuteStrategy(purchase);
+            discountApplied += discounter.ExecuteStrategy(purchase);
             discounter.SetStrategy(new SpecialStrategy());
-            DiscountApplied += discounter.ExecuteStrategy(purchase);
-            AmmountToPay = initialAmmount-DiscountApplied;
+            discountApplied += discounter.ExecuteStrategy(purchase);
+
+            finalAmmountToPay = initialAmmount - discountApplied;
+
+            return new PurchaseData(discountApplied, finalAmmountToPay);
         }
     }
 }
