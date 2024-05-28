@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using DataAccess.EFCore.Repositories;
 using Domain.Interfaces;
+using Microsoft.OpenApi.Models;
+using DataAccess.EFCore.UnitOfWork;
 
 public class Program()
 {
@@ -31,13 +33,23 @@ public class Program()
         builder.Services.AddTransient<IDeveloperRepository, DeveloperRepository>();
         builder.Services.AddTransient<IProjectRepository, ProjectRepository>();
         #endregion
+        builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
+        });
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(options => // UseSwaggerUI is called only in Development.
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                options.RoutePrefix = string.Empty;
+            });
         }
 
         app.UseHttpsRedirection();
