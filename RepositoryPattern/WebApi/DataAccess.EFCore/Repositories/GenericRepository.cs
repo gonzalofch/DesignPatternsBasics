@@ -10,6 +10,7 @@ namespace DataAccess.EFCore.Repositories
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly ApplicationContext _context;
+        //podria definir dbSet y darle valor en el constructor DbSet = context.Set<T>
         public GenericRepository(ApplicationContext context)
         {
             _context = context;
