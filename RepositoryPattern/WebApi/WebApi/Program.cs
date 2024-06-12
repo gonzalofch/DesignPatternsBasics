@@ -2,10 +2,10 @@ using WebApi;
 using DataAccess.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using DataAccess.EFCore.Repositories;
 using Domain.Interfaces;
 using Microsoft.OpenApi.Models;
 using DataAccess.EFCore.UnitOfWork;
+using DataAccess.EFCore.Repositories;
 
 public class Program()
 {
@@ -45,6 +45,7 @@ public class Program()
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseSwaggerUI(options => // UseSwaggerUI is called only in Development.
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");

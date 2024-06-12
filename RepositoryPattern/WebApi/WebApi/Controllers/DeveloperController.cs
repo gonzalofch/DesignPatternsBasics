@@ -1,4 +1,5 @@
 ﻿using DataAccess.EFCore;
+using Domain;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 namespace WebApi.Controllers

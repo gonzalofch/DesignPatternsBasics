@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Domain.Interfaces;
 
-namespace DataAccess.EFCore.Repositories
+public interface IDeveloperRepository : IGenericRepository<Developer>
 {
-    public interface IDeveloperRepository : IGenericRepository<Developer>
-    {
-        IEnumerable<Developer> GetPopularDevelopers(int count);
-    }
+    IEnumerable<Developer> GetPopularDevelopers(int count);
 }
