@@ -10,4 +10,8 @@ public class Phone
         PhoneNumber = phoneNumber;
         CountryCode = countryCode;
     }
+    public override string ToString()
+    {
+        return $"{CountryCode} {PhoneNumber}";
+    }
 }

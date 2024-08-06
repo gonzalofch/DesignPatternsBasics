@@ -13,8 +13,8 @@ public class Contact
         Address = address;
     }
 
-    public string ToString(IFormatProvider? provider)
+    public override string ToString()
     {
-        return Name.ToString(provider);
+        return $"Contact: {Name}, Phone: {Phone}, Address: {Address}";
     }
 }

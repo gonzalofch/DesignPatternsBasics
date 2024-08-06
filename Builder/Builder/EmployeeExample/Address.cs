@@ -14,4 +14,9 @@ public class Address
         Country = country;
         PostalCode = postalCode;
     }
+
+    public override string ToString()
+    {
+        return $"{HomeAddress}, {City}, {Country}, {PostalCode}";
+    }
 }

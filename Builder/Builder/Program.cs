@@ -18,7 +18,7 @@ class Program
 
 
         /*Ejemplo de una intancia de Employee normal*/
-        var aliceAddress = new Address
+        /*var aliceAddress = new Address
         (
             "Calle Montevideo",
             "Santander",
@@ -43,6 +43,28 @@ class Program
         };
 
         var employeeAlice = new Employee(30, "Alice", "Johnson", "Female", aliceAddress, alicePhone, aliceContacts);
+        */
+
+        /*Utilizando un Builder*/
+
+        var oscarContact = new Contact("Oscar", new Phone("671235832", "+11"),
+            new Address("Casa de Oscar", "Ciudad de Oscar", "Pais de Oscar", "23983"));
+
+        var miguelContact = new Contact("Miguel", new Phone("62372912", "+22"),
+            new Address("Casa de Miguel", "Ciudad de Miguel", "Pais de Miguel", "23456"));
         
+        Employee employeeGonzalo = new Employee.EmployeeBuilder()
+            .EmployeeName("Gonzalo")
+            .EmployeeLastName("Flores")
+            .EmployeeAddress("Casa de Gonzalo", "Santander", "España", "39008")
+            .EmployeeAge(19)
+            .EmployeeGender("Masculino")
+            .EmployeePhone("671312993", "+34")
+            .EmployeeContacts(oscarContact)
+            .EmployeeContacts(miguelContact)
+            .Build();
+
+        /*Info de Employee y contactos*/
+        Console.WriteLine(employeeGonzalo.ToString());
     }
 }
